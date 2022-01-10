@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.scss';
 import { AddButton } from './components/AddButton';
 import { Price } from './components/Price';
@@ -24,7 +23,6 @@ export default function App() {
             </ProductCard>
           );
         })}
-
       </div>
     </div>
   );

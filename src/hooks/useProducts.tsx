@@ -27,7 +27,7 @@ export function ProductProvider({ children }: ProductProviderProps) {
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        let list = [
+        const productsList = [
             {
                 id: 1,
                 title: "Monitor LED 27'' Gamer Curvo Samsung  1920 x 1080 FHD 240 Hz HDMI, DP, Gsync Série CRG50",
@@ -53,9 +53,9 @@ export function ProductProvider({ children }: ProductProviderProps) {
         const storage = localStorage.getItem('products');
         const productsLocalStorage = JSON.parse(String(storage));
 
-        if (!products) {
-            setLocalStorage(products);
-            setProducts(list)
+        if (!storage) {
+            setLocalStorage(productsList);
+            setProducts(productsList)
         } else {
             setProducts(productsLocalStorage);
         }
