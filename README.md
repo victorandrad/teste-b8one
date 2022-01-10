@@ -1,6 +1,8 @@
 # Teste prático b8one frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with 
+
+Este projeto está rodando no GH Pages no endereço [https://victorandra.de/teste-b8one](https://victorandra.de/teste-b8one).
 
 ## Available Scripts
 
