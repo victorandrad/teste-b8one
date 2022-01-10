@@ -1,0 +1,62 @@
+.oldPrice {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+
+    margin: 0;
+
+    letter-spacing: -0.005em;
+    text-decoration-line: line-through;
+
+    color: #b5b5b6;
+}
+
+.price {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+
+    margin: 4px 0;
+
+    letter-spacing: -0.005em;
+
+    color: #da4b4f;
+}
+
+.parcelamento {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+
+    margin: 0;
+
+    letter-spacing: -0.005em;
+
+    color: #848587;
+
+    strong {
+        color: #1c1c1c;
+        font-weight: normal;
+    }
+}
+
+.installment {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+
+    margin: 0;
+
+    letter-spacing: -0.005em;
+
+    color: #848587;
+
+    strong {
+        color: #1c1c1c;
+        font-weight: normal;
+    }
+}

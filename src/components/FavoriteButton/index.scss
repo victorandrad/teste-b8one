@@ -1,0 +1,54 @@
+.favorite {
+    position: absolute;
+    top: 0;
+    right: 1.8rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #f2f3f6;
+
+    cursor: pointer;
+
+    transition: 0.5s;
+
+    &:hover {
+        background-color: #fee5ec;
+
+        svg path {
+            stroke: #da4b4f;
+        }
+    }
+}
+
+.isActiveFavoriteButton {
+    position: absolute;
+    top: 0;
+    right: 1.8rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #da4b4f;
+
+    cursor: pointer;
+
+    transition: 0.5s;
+
+    svg path {
+        fill: #ffffff;
+        stroke: #ffffff;
+    }
+
+    &:hover {
+        background-color: #c22539;
+    }
+}

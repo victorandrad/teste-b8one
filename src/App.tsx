@@ -1,129 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.scss';
+import { AddButton } from './components/AddButton';
+import { Price } from './components/Price';
+import { ProductCard } from './components/ProductCard';
+import { ProductCardHeader } from './components/ProductCardHeader';
+import { useProducts } from './hooks/useProducts';
 
 export default function App() {
-  const maxParcelasSemJuros = 10;
-  const [produtos, setProdutos] = useState<any[]>([]);
-
-  const [, updateState] = React.useState({});
-  const forceUpdate = React.useCallback(() => updateState({}), []);
-
-  useEffect(() => {
-    let list = [
-      {
-        id: 1,
-        titulo: "Monitor LED 27'' Gamer Curvo Samsung  1920 x 1080 FHD 240 Hz HDMI, DP, Gsync Série CRG50",
-        imagem: "./assets/produtos/image.png",
-        oldPreco: 2813.99,
-        newPreco: 2599.00,
-        favorito: false,
-        adicionado: false
-      },
-      {
-        id: 2,
-        titulo: "Monitor LED 24'' Gamer Curvo Samsung  1920 x 1080 FHD 240 Hz HDMI, DP, Gsync Série CRG50",
-        imagem: "./assets/produtos/image.png",
-        oldPreco: 1899.99,
-        newPreco: 1399.00,
-        favorito: false,
-        adicionado: false
-      }
-    ];
-
-    const products = localStorage.getItem('produtos');
-
-    if (!products) {
-      localStorage.setItem('produtos', JSON.stringify(list))
-      setProdutos(list)
-    } else {
-      setProdutos(JSON.parse(products))
-    }
-
-
-  }, [])
-
-  const formataMoeda = (num: any) => {
-    const formatCurrency = new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    });
-
-    return formatCurrency.format(num);
-  }
-
-  const calculaParcelas = (maxParcelas: any, valorTotal: any) => {
-    return (valorTotal / maxParcelas);
-  }
-
-  const adicionar = (produto: any, adicionado: any, index: any) => {
-    let prod = produtos;
-
-    prod[index]['adicionado'] = !adicionado;
-
-    localStorage.setItem('produtos', JSON.stringify(prod));
-
-    setProdutos(prod);
-
-    forceUpdate();
-  }
-
-  const favoritar = (produto: any, favoritado: any, index: any) => {
-    let prod = produtos;
-
-    prod[index]['favorito'] = !favoritado;
-
-    localStorage.setItem('produtos', JSON.stringify(prod));
-
-    setProdutos(prod);
-
-    forceUpdate();
-  }
+  const { products, onAddCart } = useProducts();
 
   return (
     <div className="App">
-      <div className="grid-produtos">
-
-
-        {produtos.map((produto, i) => {
+      <div className="productsGrid">
+        {products.map(product => {
           return (
-            <div key={produto.id} className="item">
-              <div className="item-header">
-                <img src="./assets/produtos/image.png" alt="produto" />
+            <ProductCard key={product.id}>
+              <ProductCardHeader product={product} />
+              <Price product={product} />
 
-                <p className="titulo">
-                  {produto.titulo}
-                </p>
+              <br /><br /><br /><br />
 
-                <div onClick={() => favoritar(produto, produto.favorito, i)} className={produto.favorito ? 'button-favoritado' : 'button-favorito'}>
-                  <svg width="26" height="23" viewBox="0 0 26 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M23.1494 2.85655C22.5629 2.26797 21.8667 1.80107 21.1003 1.48251C20.334 1.16396 19.5126 1 18.6831 1C17.8535 1 17.0321 1.16396 16.2658 1.48251C15.4994 1.80107 14.8032 2.26797 14.2167 2.85655L12.9997 4.07749L11.7826 2.85655C10.5981 1.66822 8.99152 1.00062 7.31633 1.00062C5.64114 1.00062 4.03455 1.66822 2.85001 2.85655C1.66547 4.04489 1 5.65662 1 7.33718C1 9.01774 1.66547 10.6295 2.85001 11.8178L4.06705 13.0387L12.9997 22L21.9323 13.0387L23.1494 11.8178C23.7361 11.2295 24.2015 10.531 24.519 9.76219C24.8366 8.99339 25 8.16936 25 7.33718C25 6.50499 24.8366 5.68096 24.519 4.91216C24.2015 4.14336 23.7361 3.44486 23.1494 2.85655Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-              </div>
-
-              <p className="oldPreco">
-                {formataMoeda(produto.oldPreco)}
-              </p>
-
-              <p className="newPreco">
-                {formataMoeda(produto.newPreco)}
-              </p>
-
-              <p className="parcelamento">
-                em até <strong>{maxParcelasSemJuros}x de {formataMoeda(calculaParcelas(maxParcelasSemJuros, produto.newPreco))}</strong> sem juros
-              </p>
-
-              <br />
-              <br />
-              <br />
-              <br />
-
-              <button className={produto.adicionado ? "addedBotao" : "addBotao"} onClick={() => adicionar(produto, produto.adicionado, i)}>
-                {produto.adicionado ? <img src="./assets/icons/check.svg" alt="check" /> : ''}
-                &nbsp;
-                {produto.adicionado ? "Adicionado" : "Adicionar"}
-              </button>
-            </div>
+              <AddButton onClick={() => onAddCart(product.id)} isAdded={product.added} />
+            </ProductCard>
           );
         })}
 

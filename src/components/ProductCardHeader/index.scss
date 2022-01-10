@@ -1,0 +1,16 @@
+.itemHeader {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .title {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+
+        color: #1c1c1c;
+    }
+}
