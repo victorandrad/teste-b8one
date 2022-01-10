@@ -1,17 +1,17 @@
 # Teste prático b8one frontend
 
-This project was bootstrapped with 
+Este projeto está rodando no GH Pages no endereço [https://victorandra.de/teste-b8one](https://victorandra.de/teste-b8one)
 
-Este projeto está rodando no GH Pages no endereço [https://victorandra.de/teste-b8one](https://victorandra.de/teste-b8one).
+O endereço [https://victorandra.de](https://victorandra.de) é meu dominio próprio e pessoal
 
-## Available Scripts
+## Comandos disponíveis
 
 In the project directory, you can run:
 
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Para rodar a aplicação em modo de desenvolvimento.\
+Abra [http://localhost:3000](http://localhost:3000) para vizualizar a página no browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
