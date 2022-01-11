@@ -10,19 +10,21 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className="productsGrid">
-        {products.map(product => {
-          return (
-            <ProductCard key={product.id}>
-              <ProductCardHeader product={product} />
-              <Price product={product} />
+      <div className="container">
+        <div className="productsGrid">
+          {products.map(product => {
+            return (
+              <ProductCard key={product.id}>
+                <ProductCardHeader product={product} />
+                <Price product={product} />
 
-              <br /><br /><br /><br />
+                <br /><br /><br /><br />
 
-              <AddButton onClick={() => onAddCart(product.id)} isAdded={product.added} />
-            </ProductCard>
-          );
-        })}
+                <AddButton onClick={() => onAddCart(product.id)} isAdded={product.added} />
+              </ProductCard>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
